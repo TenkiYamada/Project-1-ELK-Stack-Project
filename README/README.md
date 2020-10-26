@@ -54,7 +54,7 @@ A summary of the access policies in place can be found in the table below.
 | Web-1                | No                  | Virtual Network      |
 | Web-2                | No                  | Virtual Network      |
 | ELK-Server           | No                  | Virtual Network      |
-"""
+
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because **allows for accelarated automation**
