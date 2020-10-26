@@ -1,4 +1,3 @@
-"""
 ## Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
@@ -16,7 +15,6 @@ This document contains the following details:
   - Machines Being Monitored
 - How to Use the Ansible Build
 
-"""
 ### Description of the Topology
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
@@ -38,7 +36,7 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 | Web-1                | Web Server | 10.0.0.7   | Linux            |
 | Web-2                | Web Server | 10.0.0.8   | Linux            |
 | ELK-Server           | Monitoring | 10.1.0.4   | Linux            |
-"""
+
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
@@ -72,7 +70,7 @@ The playbook implements the following tasks:
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 ![dockerps](Images/dockerps.PNG)
-"""
+
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 - Web 1: 10.0.0.7  
@@ -85,23 +83,39 @@ We have installed the following Beats on these machines:
 These Beats allow us to collect the following information from each machine:
 - **Filebeat**  - collects data about the file system
 - **Metricbeat** - collects machine metrics, such as uptime
-"""
+
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
 - Copy the **playbook** file to **Ansible Control Node**.
-"""
+-  Playbooks for Filebeat and Mtricbeat are also here: [filebeat-playbook.yml](Playbooks/filebeat-playbook.yml) & [metricbeat-playbook.yml](Playbooks/metricbeat-playbook.yml)
+```
 $ cd /etc/ansible
 $ mkdir files
 # Clone Repository + IaC Files
 $ git clone https://github.com/TenkiYamada/Project-1-ELK-Stack-Project.git
 # Move Playbooks and hosts file Into `/etc/ansible`
 $ cp /Project-1-ELK-Stack-Project/ReadMe/Playbooks/*
-"""
+```
 - Update the **hosts** file to include **webserver** and **elk**
-- Run the playbook, and navigate to **Kibana (http://[Host IP]/app/kibana#/home)** to check that the installation worked as expected.
-
--  Playbooks are found here: [filebeat-playbook.yml](Playbooks/filebeat-playbook.yml) & [metricbeat-playbook.yml](Playbooks/metricbeat-playbook.yml)
 - Edit **hosts** file do you update to make Ansible run the playbook on a specific machine, and specify which machine to install the ELK server on versus which to install Filebeat.
-- Check that the ELK server is running: **http://[Host IP]/app/kibana#/home**
+```
+$ cd /etc/ansible
+$ cat > hosts <<EOF
+[webservers]
+10.0.0.7
+10.0.0.8
+
+[elk]
+10.1.0.4
+EOF
+```
+- Run the playbook, and navigate to **Kibana (http://[Host IP]/app/kibana#/home)** to check that the installation worked as expected.
+```
+ $ cd /etc/ansible
+ $ ansible-playbook install_elk.yml elk
+ $ ansible-playbook install_filebeat.yml webservers
+ $ ansible-playbook install_metricbeat.yml webservers
+ ```
+ - Check that the ELK server is running: **http://[Host IP]/app/kibana#/home**
