@@ -99,7 +99,7 @@ $ git clone https://github.com/TenkiYamada/Project-1-ELK-Stack-Project.git
 $ cp /Project-1-ELK-Stack-Project/ReadMe/Playbooks/*
 ```
 - Update the **hosts** file to include **webserver** and **elk**
-- Edit **hosts** file do you update to make Ansible run the playbook on a specific machine, and specify which machine to install the ELK server on versus which to install Filebeat.
+- Edit **hosts** file to update and to make Ansible run the playbook on a specific machine, and specify which machine to install the ELK server on versus which to install Filebeat.
 ```
 $ cd /etc/ansible
 $ cat > hosts <<EOF
