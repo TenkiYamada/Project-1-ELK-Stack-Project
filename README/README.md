@@ -2,13 +2,13 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Update the path with the name of your diagram](Images/diagram_filename.png)
+[NetworkDiagram](Images/Project1Network.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YAML file may be used to install only certain pieces of it, such as Filebeat.
 - [install_elk.yml](Playbooks/install_elk.yml)
 
 This document contains the following details:
-- Description of the Topologu
+- Description of the Topology
 - Access Policies
 - ELK Configuration
   - Beats in Use
@@ -44,7 +44,7 @@ The machines on the internal network are not exposed to the public Internet.
 
 Only the **jumpbox** machine can accept connections from the Internet. Access to this machine is only allowed from the following IP address: **70.123.40.65 (my local machine)**
 
-Machines within the network can only be accessed by **each other**.
+Machines within the network can only be accessed **each other**.
 - Jumpbox to connect to ELK VM from IP address: **10.0.0.4**
 
 A summary of the access policies in place can be found in the table below.
@@ -90,6 +90,14 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 - Copy the **playbook** file to **Ansible Control Node**.
+"""
+$ cd /etc/ansible
+$ mkdir files
+# Clone Repository + IaC Files
+$ git clone https://github.com/TenkiYamada/Project-1-ELK-Stack-Project.git
+# Move Playbooks and hosts file Into `/etc/ansible`
+$ cp /Project-1-ELK-Stack-Project/ReadMe/Playbooks/*
+"""
 - Update the **hosts** file to include **webserver** and **elk**
 - Run the playbook, and navigate to **Kibana (http://[Host IP]/app/kibana#/home)** to check that the installation worked as expected.
 
