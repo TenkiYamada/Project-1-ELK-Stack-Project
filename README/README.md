@@ -41,7 +41,7 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the **jumpbox** machine can accept connections from the Internet. Access to this machine is only allowed from the following IP address: **70.123.40.65 (my local machine)**
+Only the **jumpbox** machine can accept connections from the Internet. Access to this machine is only allowed from the following IP address: **(IP od my local machine)**
 
 Machines within the network can only be accessed **each other**.
 - Jumpbox to connect to ELK VM from IP address: **10.0.0.4**
